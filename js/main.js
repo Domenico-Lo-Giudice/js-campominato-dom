@@ -62,8 +62,10 @@ function generaCella(testo) {
 }
 
 
+// array numeri diversi
 const numeriDiversi = [];
 
+// funzione per evitare che si ripetano numeri uguali
 while (numeriDiversi.length < 16) {
 	randomNumber = Math.floor(Math.random() * 100) + 1;
 
