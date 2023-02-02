@@ -61,6 +61,12 @@ while (numeriDiversi.length < 16) {
 
 console.log(numeriDiversi);
 
+
+const restartButton = document.querySelector('#restart-button');
+const youLose = document.querySelector('.lose');
+const punteggio = document.querySelector('#punteggio');
+let counter = 1; //conatore click effettuati
+
 let gameOver = false;
 
 function generaCella(testo) {
@@ -73,17 +79,40 @@ function generaCella(testo) {
 		this.classList.toggle("active");
 		console.log(this.innerHTML);
 
+	if (!this.classList.contains('clicked')) {
+		this.classList.add('clicked');
+
+		punteggio.innerHTML = `PUNTEGGIO: ${counter}`;
+		counter = counter + 1;
+	}
+
+			
+
 		// se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso
-		if (numeriDiversi.includes(parseInt(this.innerHTML))) {
-			cella.classList.add("bomb");
-			gameOver = true;
-			// Mostra un messaggio di game over
-			alert("Game Over!");
-		}
+	if (numeriDiversi.includes(parseInt(this.innerHTML))) {
+		cella.classList.add("bomb");
+		gameOver = true;
+		// Mostra un messaggio di game over
+			
+		youLose.classList.remove('d-none');
+			
+	}
+
+	if (counter == 84) {
+		alert('complimenti, hai vinto!!');
+	}
+		
 	});
 
 	return cella;
 }
 
-
+restartButton.addEventListener('click',
+	function () {
+		grid.innerHTML = '';
+		youLose.classList.add('d-none');
+		counter = 0;
+		punteggio.innerHTML = `PUNTEGGIO: ${counter}`;
+	}
+)
 
