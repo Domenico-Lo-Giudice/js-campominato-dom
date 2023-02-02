@@ -65,9 +65,12 @@ console.log(numeriDiversi);
 const restartButton = document.querySelector('#restart-button');
 const lose = document.querySelector('.lose');
 const punteggio = document.querySelector('#punteggio');
-let counter = 1; //conatore click effettuati
+
+//conatore click effettuati
+let counter = 1; 
 
 let gameOver = false;
+
 
 function generaCella(testo) {
 	const cella = document.createElement("div");
@@ -79,6 +82,7 @@ function generaCella(testo) {
 		this.classList.toggle("active");
 		console.log(this.innerHTML);
 
+	// punteggio quando clicca
 	if (!this.classList.contains('clicked')) {
 		this.classList.add('clicked');
 
@@ -98,6 +102,7 @@ function generaCella(testo) {
 			
 	}
 
+	// se l'utente arriva a 84 vince
 	if (counter == 84) {
 		alert('complimenti, hai vinto!!');
 	}
@@ -107,6 +112,7 @@ function generaCella(testo) {
 	return cella;
 }
 
+// restard button 
 restartButton.addEventListener('click',
 	function () {
 		grid.innerHTML = '';
