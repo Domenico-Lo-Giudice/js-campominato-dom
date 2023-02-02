@@ -51,3 +51,12 @@ body {
 .square.active {
 	background-color: var(--active-bg);
 }
+
+.bomb {
+	width: calc(100% / 10);
+	height: calc(100% / 10);
+	cursor: crosshair;
+}
+.bomb.active {
+	background-color: red;
+}

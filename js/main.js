@@ -46,26 +46,10 @@ function generaGriglia(grid) {
  * @return {HTMLElement}
  */
 
-function generaCella(testo) {
-	const cella = document.createElement("div");
-	cella.classList.add("square");
-	cella.innerHTML = testo;
-	cella.addEventListener(
-		"click",
-		function () {
-			this.classList.toggle("active");
-			console.log(this.innerHTML);
-		}
-	);
-
-	return cella;
-}
-
-
 // array numeri diversi
 const numeriDiversi = [];
 
-// funzione per evitare che si ripetano numeri uguali
+// per evitare che si ripetano numeri uguali
 while (numeriDiversi.length < 16) {
 	randomNumber = Math.floor(Math.random() * 100) + 1;
 
@@ -76,3 +60,30 @@ while (numeriDiversi.length < 16) {
 }
 
 console.log(numeriDiversi);
+
+let gameOver = false;
+
+function generaCella(testo) {
+	const cella = document.createElement("div");
+	cella.classList.add("square");
+	cella.innerHTML = testo;
+	cella.addEventListener(
+		"click", 
+		function () {
+		this.classList.toggle("active");
+		console.log(this.innerHTML);
+
+		// se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso
+		if (numeriDiversi.includes(parseInt(this.innerHTML))) {
+			cella.classList.add("bomb");
+			gameOver = true;
+			// Mostra un messaggio di game over
+			alert("Game Over!");
+		}
+	});
+
+	return cella;
+}
+
+
+
