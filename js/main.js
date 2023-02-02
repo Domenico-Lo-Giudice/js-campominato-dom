@@ -63,7 +63,7 @@ console.log(numeriDiversi);
 
 
 const restartButton = document.querySelector('#restart-button');
-const youLose = document.querySelector('.lose');
+const lose = document.querySelector('.lose');
 const punteggio = document.querySelector('#punteggio');
 let counter = 1; //conatore click effettuati
 
@@ -94,7 +94,7 @@ function generaCella(testo) {
 		gameOver = true;
 		// Mostra un messaggio di game over
 			
-		youLose.classList.remove('d-none');
+		lose.classList.remove('d-none');
 			
 	}
 
@@ -110,7 +110,7 @@ function generaCella(testo) {
 restartButton.addEventListener('click',
 	function () {
 		grid.innerHTML = '';
-		youLose.classList.add('d-none');
+		lose.classList.add('d-none');
 		counter = 0;
 		punteggio.innerHTML = `PUNTEGGIO: ${counter}`;
 	}
